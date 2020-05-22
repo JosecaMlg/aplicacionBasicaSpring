@@ -1,0 +1,9 @@
+com\apijccp\controller\HolaController.class
+com\apijccp\vo\alta\usuario\RegistroSalida.class
+com\apijccp\vo\AutoValue_AutoValueMoney.class
+com\apijccp\spring\config\SpringConfiguration.class
+com\apijccp\vo\alta\usuario\RegistroEntrada.class
+com\apijccp\vo\AutoValueMoney.class
+com\apijccp\vo\RespuestaPrueba.class
+com\apijccp\interceptor\GlobalInterceptor.class
+com\apijccp\spring\config\WebServletConfiguration.class

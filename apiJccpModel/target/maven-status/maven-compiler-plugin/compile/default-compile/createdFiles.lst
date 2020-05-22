@@ -1,0 +1,9 @@
+com\apijccp\model\Usuario.class
+com\apijccp\exception\UsuarioException$TipException.class
+com\apijccp\model\Usuario$UsuarioBuilder.class
+com\apijccp\exception\UsuarioException.class
+com\apijccp\dao\UsuarioWeb$TipEstado.class
+com\apijccp\dao\UsuarioWeb.class
+com\apijccp\dao\UsuarioWebFake.class
+com\apijccp\model\Usuario$1.class
+com\apijccp\service\usuarios\UsuariosService.class

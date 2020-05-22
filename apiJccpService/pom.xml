@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.apijccp</groupId>
+    <artifactId>apiJccp-raiz</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>apiJccpService</artifactId>
+  
+  	<dependencies>
+	    <!-- Spring MVC -->
+		 <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${spring-mvc-version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>javax.servlet</groupId>
+	        <artifactId>javax.servlet-api</artifactId>
+	        <version>${javax.servlet-version}</version>
+	        <scope>provided</scope>
+	    </dependency>
+	    <dependency>
+	        <groupId>javax.servlet</groupId>
+	        <artifactId>jstl</artifactId>
+	        <version>${javax.servlet.jstl-version}</version>
+     	</dependency>
+     	<dependency>
+			<groupId>com.apijccp.model</groupId>
+		    <artifactId>apiJccpModel</artifactId>
+		    <version>${api-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.apijccp.dao</groupId>
+		    <artifactId>apiJccpDao</artifactId>
+		    <version>${api-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+	   		<version>${spring-security-web-version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		    <version>${jjwt-version}</version>
+		</dependency>
+	</dependencies>
+	
+	
+	  <build>
+        <finalName>apiJccpService</finalName>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin-version}</version>
+                    <configuration>
+                        <source>${java-version}</source>
+                        <target>${java-version}</target>
+                    </configuration>
+                </plugin>
+             </plugins>
+        </pluginManagement>
+     </build>
+
+  
+  <packaging>jar</packaging>
+  <version>${api-version}</version>
+  <groupId>com.apijccp.service</groupId>
+</project>

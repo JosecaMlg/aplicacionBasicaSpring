@@ -1,0 +1,4 @@
+com\apijccp\dao\mysql\mapper\UsuarioWebMapper.class
+com\apijccp\dao\mysql\mapper\typehandler\TipEstadoUsuEnumHandler.class
+com\apijccp\dao\impl\UsuarioWebImpl.class
+com\apijccp\dao\spring\config\SpringConfigurationDao.class
