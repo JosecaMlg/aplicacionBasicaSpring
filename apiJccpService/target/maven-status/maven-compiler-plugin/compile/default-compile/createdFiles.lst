@@ -1,2 +1,8 @@
-com\apijccp\service\spring\config\SpringConfigurationService.class
+com\apijccp\service\spring\security\SeguridadService.class
+com\apijccp\service\spring\security\CustomAuthority.class
 com\apijccp\service\usuarios\UsuariosServiceImpl.class
+com\apijccp\service\spring\config\SpringConfigurationService.class
+com\apijccp\service\spring\security\CustomUserDetails$CustomUserDetailsBuilder.class
+com\apijccp\service\spring\security\SimpleUserDetailsService.class
+com\apijccp\service\spring\security\CustomUserDetails$1.class
+com\apijccp\service\spring\security\CustomUserDetails.class

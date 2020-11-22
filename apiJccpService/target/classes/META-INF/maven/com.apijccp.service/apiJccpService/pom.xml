@@ -60,6 +60,13 @@
                     <configuration>
                         <source>${java-version}</source>
                         <target>${java-version}</target>
+                        <annotationProcessorPaths>
+				          <path>
+				            <groupId>com.google.auto.value</groupId>
+				            <artifactId>auto-value</artifactId>
+				            <version>${auto-value-version}</version>
+				          </path>
+				        </annotationProcessorPaths>
                     </configuration>
                 </plugin>
              </plugins>

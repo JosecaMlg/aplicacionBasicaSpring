@@ -31,8 +31,10 @@ public class LoginController {
 		RespLogin salida =  new RespLogin();
 		salida.setJwtToken(token);
 		salida.setIdUser(SecurityContextHolder.getContext().getAuthentication().getName());
-		
+
 		LOGGER.info("LoginController :: token generado, mostramos respuesta -> "+salida);
         return salida;
     }
+	
+	
 }

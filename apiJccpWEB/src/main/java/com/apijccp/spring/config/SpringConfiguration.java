@@ -1,19 +1,18 @@
 package com.apijccp.spring.config;
 
-import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.apijccp.interceptor.GlobalInterceptor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 
 @EnableWebMvc
 @Configuration
@@ -30,13 +29,17 @@ public class SpringConfiguration implements WebMvcConfigurer{
         registry.addInterceptor(new GlobalInterceptor()).addPathPatterns("/*");
     }
 	
-    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-    	System.out.println("entro!");
-	}
-
 	@Bean 
 	public String beanPrueba(){
 		return "miPrimerBean";
+	}
+	
+	@Bean(name="mapperJson")
+	public ObjectMapper globalObjMapperJson() {
+		ObjectMapper om = new ObjectMapper();
+		om.registerModule(new Jdk8Module());
+		
+		return om;
 	}
 	
 	/**

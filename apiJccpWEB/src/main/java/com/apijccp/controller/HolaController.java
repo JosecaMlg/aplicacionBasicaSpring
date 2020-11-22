@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +25,6 @@ import com.apijccp.exception.UsuarioException;
 import com.apijccp.model.Usuario;
 import com.apijccp.service.spring.security.CustomUserDetails;
 import com.apijccp.service.usuarios.UsuariosService;
-import com.apijccp.vo.AutoValueMoney;
 import com.apijccp.vo.RespuestaPrueba;
 import com.apijccp.vo.alta.usuario.RegistroEntrada;
 import com.apijccp.vo.alta.usuario.RegistroSalida;
@@ -87,11 +85,11 @@ public class HolaController {
 			method=RequestMethod.POST, 
 			produces = MediaType.APPLICATION_JSON_VALUE) 
     public RegistroSalida altaUsuario(@RequestBody @Valid RegistroEntrada entrada) throws UsuarioException {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
 		Usuario usuario = new Usuario.UsuarioBuilder(entrada.getCod_usuario(), entrada.getPassword())
 									.withIdEstado(TipEstado.ALTA)
 									.withIdUsuario(9)
+									.withTipRolUsuario(entrada.getRol())
 									.build();
 		
 		usuarios.registraUsuario(usuario);

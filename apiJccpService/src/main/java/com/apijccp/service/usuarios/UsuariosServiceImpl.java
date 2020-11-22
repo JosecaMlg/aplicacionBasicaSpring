@@ -8,11 +8,15 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.apijccp.dao.RolUsuKey;
 import com.apijccp.dao.UsuarioWeb;
 import com.apijccp.dao.UsuarioWebFake;
+import com.apijccp.dao.mysql.mapper.RolUsuMapper;
 import com.apijccp.dao.mysql.mapper.UsuarioWebMapper;
 import com.apijccp.model.Usuario;
+import com.apijccp.model.enumerados.TipRolUsuario;
 
 @Service
 public class UsuariosServiceImpl implements UsuariosService {
@@ -22,6 +26,9 @@ public class UsuariosServiceImpl implements UsuariosService {
 	
 	@Autowired
 	UsuarioWebMapper mapper;
+	
+	@Autowired 
+	RolUsuMapper rolUsuMapper;
 	
 	@Autowired
 	PasswordEncoder passwordEncoder;
@@ -35,6 +42,7 @@ public class UsuariosServiceImpl implements UsuariosService {
 
 	
 	@Override
+	@Transactional
 	public UsuarioWeb registraUsuario(Usuario usuario) {
 		UsuarioWeb uw =new UsuarioWeb();
 		uw.setIdUsuario(mapper.selectNextID());
@@ -50,8 +58,21 @@ public class UsuariosServiceImpl implements UsuariosService {
 		
 		mapper.insert(uw);
 		
-		return null;
+		insertRoles(uw.getIdUsuario(), usuario.getRol());
+		
+		return uw;
 	}
+	
+	private void insertRoles(Integer idUsuario, TipRolUsuario rol) {
+		for (String rolItem :  rol.getRoles()) {
+			RolUsuKey ruk = new RolUsuKey();
+			ruk.setCodRol(rolItem);
+			ruk.setIdUsuario(idUsuario);
+			rolUsuMapper.insert(ruk);
+		}
+		
+	}
+
 
 	@Override
 	public UsuarioWeb getUsuariobyUsername(String username) {

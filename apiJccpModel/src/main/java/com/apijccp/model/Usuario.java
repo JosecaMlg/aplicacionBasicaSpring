@@ -2,6 +2,7 @@ package com.apijccp.model;
 
 import com.apijccp.dao.UsuarioWeb.TipEstado;
 import com.apijccp.exception.UsuarioException;
+import com.apijccp.model.enumerados.TipRolUsuario;
 
 public class Usuario {
 	
@@ -9,7 +10,11 @@ public class Usuario {
 	private final String codUsuario;
 	private final String password;
 	private final TipEstado estado;
+	private final TipRolUsuario rol;
 	
+	public TipRolUsuario getRol() {
+		return rol;
+	}
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
@@ -24,7 +29,8 @@ public class Usuario {
 	}
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + ", cod_usuario=" + codUsuario + ", password=" + password + "]";
+		return "Usuario [idUsuario=" + idUsuario + ", codUsuario=" + codUsuario + ", password=" + password + ", estado="
+				+ estado + ", rol=" + rol + "]";
 	}
 	
 	public static class UsuarioBuilder {
@@ -32,6 +38,7 @@ public class Usuario {
 		private String codUsuario;
 		private String password;
 		private TipEstado estado;
+		private TipRolUsuario rol;
 		
 		public UsuarioBuilder (String codUsuario, String password) {
 			this.codUsuario = codUsuario;
@@ -48,6 +55,11 @@ public class Usuario {
 			return this;
 		}
 		
+		public UsuarioBuilder withTipRolUsuario(TipRolUsuario rol) {
+			this.rol = rol;
+			return this;
+		}
+		
 		public Usuario build() throws UsuarioException {
 			/**
 			 * Check params
@@ -61,6 +73,9 @@ public class Usuario {
 			if (codUsuario == null) {
 				throw new UsuarioException (UsuarioException.TipException.PARAMETROS_INCORRECTOS, "codUsuario is null");
 			}
+			if (rol == null) {
+				throw new UsuarioException (UsuarioException.TipException.PARAMETROS_INCORRECTOS, "rol is null");
+			}
 			
 			return new Usuario(this);
 		}
@@ -71,6 +86,7 @@ public class Usuario {
 		this.codUsuario = builder.codUsuario;
 		this.password = builder.password;
 		this.estado = builder.estado;
+		this.rol = builder.rol;
 	}
 	
 }

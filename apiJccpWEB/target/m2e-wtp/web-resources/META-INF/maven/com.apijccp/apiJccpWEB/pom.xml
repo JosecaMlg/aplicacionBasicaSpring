@@ -37,6 +37,11 @@
 	    <version>${jackson-databind-version}</version>
 	</dependency>
 	<dependency>
+	    <groupId>com.fasterxml.jackson.datatype</groupId>
+	    <artifactId>jackson-datatype-jdk8</artifactId>
+	    <version>${jackson-databind-version}</version>
+	</dependency>
+	<dependency>
 		<groupId>com.apijccp.model</groupId>
 	    <artifactId>apiJccpModel</artifactId>
 	    <version>${api-version}</version>
@@ -50,11 +55,6 @@
 	    <groupId>org.hibernate</groupId>
 	    <artifactId>hibernate-validator</artifactId>
 	    <version>${hibernate-validator-version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.google.auto.value</groupId>
-	    <artifactId>auto-value-annotations</artifactId>
-	    <version>${auto-value-version}</version>
 	</dependency>
 	<dependency>
 	    <groupId>org.springframework.security</groupId>

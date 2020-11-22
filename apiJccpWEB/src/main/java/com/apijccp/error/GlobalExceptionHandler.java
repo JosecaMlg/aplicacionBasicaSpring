@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import com.apijccp.controller.HolaController;
 import com.apijccp.exception.UsuarioException;
 
 @ControllerAdvice
@@ -53,4 +52,5 @@ public class GlobalExceptionHandler {
 		
 		return new ResponseEntity<Object>(salida, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 	}
+	
 }

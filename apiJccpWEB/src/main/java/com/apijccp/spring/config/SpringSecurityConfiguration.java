@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -66,6 +67,12 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.addFilterAfter(new CustomFilter(),
                 BasicAuthenticationFilter.class);
 	}
+	
+	//Establece el prefijo con el que empiezan todos los roles...
+	@Bean
+	GrantedAuthorityDefaults grantedAuthorityDefaults() {
+	    return new GrantedAuthorityDefaults("ROL_");
+	}
 
 	@Bean
 	@Override
@@ -82,5 +89,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+	
+	
+	
 }
